@@ -34,7 +34,7 @@ export const Activity = () => {
           회원님을 위한 추천
         </Text>
         {FriendsProfileData.slice(6, 12).map((data, index) => {
-          return <ActivityRecommend />
+          return <ActivityRecommend data={data} />
         })}
       </ScrollView>
     </SafeAreaView>
