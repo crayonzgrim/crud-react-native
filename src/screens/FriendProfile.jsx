@@ -1,6 +1,58 @@
-import React from 'react';
-import {Text} from 'react-native';
+import React, { memo } from 'react'
+import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
+import Ionic from 'react-native-vector-icons/Ionicons'
+import Feather from 'react-native-vector-icons/Feather'
+import { useNavigation } from '@react-navigation/native'
+import { ProfileBody } from '../components/ProfileBody'
+import { ProfileButton } from '../components/ProfileButton'
 
-export const FriendProfile = () => {
-  return <Text>FriendProfile</Text>;
-};
+export const FriendProfile = ({ route }) => {
+  /** Property */
+  const { name, profileImage, post, followers, following } = route.params
+
+  const navigation = useNavigation()
+
+  /** Function */
+
+  /** Render */
+  return (
+    <SafeAreaView
+      style={{
+        width: '100%',
+        backgroundColor: '#fff'
+      }}
+    >
+      <View style={{ padding: 10 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Ionic name="arrow-back" style={{ fontSize: 20, color: '#000' }} />
+          </TouchableOpacity>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              width: '92%'
+            }}
+          >
+            <Text style={{ fontSize: 15, marginLeft: 10, fontWeight: 'bold' }}>
+              {name}
+            </Text>
+            <Feather
+              name="more-vertical"
+              style={{ fontSize: 20, color: '#000' }}
+            />
+          </View>
+        </View>
+        <ProfileBody
+          name={name}
+          profileImage={profileImage}
+          post={post}
+          followers={followers}
+          following={following}
+        />
+        <ProfileButton id={1} name={name} profileImage={profileImage} />
+      </View>
+    </SafeAreaView>
+  )
+}

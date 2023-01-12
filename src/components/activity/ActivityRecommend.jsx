@@ -9,8 +9,6 @@ export const ActivityRecommend = ({ data }) => {
   const [follow, setFollow] = useState(data.follow)
   const [close, setClose] = useState(false)
 
-  console.log(data.follow)
-
   /** Function */
   const onPressHandler = () => {
     navigation.push('FriendProfile', {
