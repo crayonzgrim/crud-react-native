@@ -1,32 +1,32 @@
-import React, { memo } from 'react'
-import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
+import {
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View
+} from 'react-native'
 import Ionic from 'react-native-vector-icons/Ionicons'
 import Feather from 'react-native-vector-icons/Feather'
-import { useNavigation } from '@react-navigation/native'
 import { ProfileBody } from '../components/ProfileBody'
 import { ProfileButton } from '../components/ProfileButton'
+import { FriendsProfileData } from '../datas/friendsProfileData'
+import { FriendItem } from '../components/FriendItem'
 
-export const FriendProfile = ({ route }) => {
+export const FriendProfile = ({ route, navigation }) => {
   /** Property */
   const { name, profileImage, post, followers, following } = route.params
-
-  const navigation = useNavigation()
 
   /** Function */
 
   /** Render */
   return (
-    <SafeAreaView
-      style={{
-        width: '100%',
-        backgroundColor: '#fff'
-      }}
-    >
+    <SafeAreaView style={{ width: '100%', backgroundColor: '#fff' }}>
       <View style={{ padding: 10 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Ionic name="arrow-back" style={{ fontSize: 20, color: '#000' }} />
           </TouchableOpacity>
+
           <View
             style={{
               flexDirection: 'row',
@@ -44,6 +44,7 @@ export const FriendProfile = ({ route }) => {
             />
           </View>
         </View>
+
         <ProfileBody
           name={name}
           profileImage={profileImage}
@@ -52,6 +53,26 @@ export const FriendProfile = ({ route }) => {
           following={following}
         />
         <ProfileButton id={1} name={name} profileImage={profileImage} />
+        <Text
+          style={{
+            paddingVertical: 10,
+            fontSize: 15,
+            fontWeight: 'bold'
+          }}
+        >
+          회원님을 위한 추천
+        </Text>
+        <ScrollView
+          horizontal={true}
+          showsHorizontalScrollIndicator={true}
+          style={{ padding: 10 }}
+        >
+          {name === FriendsProfileData.name
+            ? null
+            : FriendsProfileData.map((data, index) => (
+                <FriendItem key={index} data={data} name={name} />
+              ))}
+        </ScrollView>
       </View>
     </SafeAreaView>
   )

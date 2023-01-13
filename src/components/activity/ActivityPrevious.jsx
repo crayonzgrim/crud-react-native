@@ -9,16 +9,6 @@ export const ActivityPrevious = ({ data }) => {
   const [follow, setFollow] = useState(data.follow)
 
   /** Function */
-  const onPressHandler = () => {
-    navigation.push('FirendProfile', {
-      name: data.name,
-      profileImage: data.profileImage,
-      follow: follow,
-      post: data.posts,
-      followers: data.followers,
-      following: data.following
-    })
-  }
 
   /** Render */
   return (
@@ -33,7 +23,16 @@ export const ActivityPrevious = ({ data }) => {
         }}
       >
         <TouchableOpacity
-          onPress={onPressHandler}
+          onPress={() =>
+            navigation.push('FirendProfile', {
+              name: data.name,
+              profileImage: data.profileImage,
+              follow: follow,
+              post: data.posts,
+              followers: data.followers,
+              following: data.following
+            })
+          }
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
@@ -51,11 +50,12 @@ export const ActivityPrevious = ({ data }) => {
             }}
           />
           <Text style={{ fontSize: 15 }}>
-            <Text style={{ fontWeight: 'bold' }}>{data.name}</Text>
+            <Text style={{ fontWeight: 'bold' }}>{data.name}</Text>의 사진 및
+            동영상을 보려면 팔로우 하세요.
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => setFollow(!follow)}
+          onPress={() => setFollow(prev => !prev)}
           style={{ width: follow ? 72 : 68 }}
         >
           <View

@@ -8,16 +8,6 @@ export const ActivityThisWeek = () => {
   const navigation = useNavigation()
 
   /** Function */
-  const onPressHandler = () => {
-    navigation.push('FriendProfile', {
-      name: data.name,
-      profileImage: data.profileImage,
-      follow: data.follow,
-      post: data.posts,
-      followers: data.followers,
-      following: data.following
-    })
-  }
 
   /** Render */
   return (
@@ -26,7 +16,19 @@ export const ActivityThisWeek = () => {
       <View style={{ flexDirection: 'row', paddingVertical: 10 }}>
         {FriendsProfileData.slice(0, 3).map((data, index) => {
           return (
-            <TouchableOpacity key={index} onPress={onPressHandler}>
+            <TouchableOpacity
+              key={index}
+              onPress={() =>
+                navigation.push('FriendProfile', {
+                  name: data.name,
+                  profileImage: data.profileImage,
+                  follow: data.follow,
+                  post: data.posts,
+                  followers: data.followers,
+                  following: data.following
+                })
+              }
+            >
               <Text>{data.name} </Text>
             </TouchableOpacity>
           )

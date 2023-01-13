@@ -6,20 +6,12 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 export const ActivityRecommend = ({ data }) => {
   /** Property */
   const navigation = useNavigation()
+
   const [follow, setFollow] = useState(data.follow)
   const [close, setClose] = useState(false)
 
   /** Function */
-  const onPressHandler = () => {
-    navigation.push('FriendProfile', {
-      name: data.name,
-      profileImage: data.profileImage,
-      follow: follow,
-      post: data.posts,
-      followers: data.followers,
-      following: data.following
-    })
-  }
+  const onPressHandler = () => {}
 
   const followHandler = () => {
     setFollow(!follow)
@@ -44,7 +36,16 @@ export const ActivityRecommend = ({ data }) => {
                 alignItems: 'center',
                 maxWidth: '64%'
               }}
-              onPress={onPressHandler}
+              onPress={() =>
+                navigation.push('FriendProfile', {
+                  name: data.name,
+                  profileImage: data.profileImage,
+                  follow: follow,
+                  post: data.posts,
+                  followers: data.followers,
+                  following: data.following
+                })
+              }
             >
               <Image
                 source={data.profileImage}
@@ -59,10 +60,10 @@ export const ActivityRecommend = ({ data }) => {
                 <Text style={{ fontWeight: 'bold', fontSize: 14 }}>
                   {data.name}
                 </Text>
-                <Text style={{ fontSize: 12, opacity: 0.5 }}>
+                <Text style={{ fontSize: 14, opacity: 0.5 }}>
                   {data.accountName}
                 </Text>
-                <Text style={{ fontSize: 12, opacity: 0.5 }}>
+                <Text style={{ fontSize: 14, opacity: 0.5 }}>
                   회원님을 위한 추천
                 </Text>
               </View>
@@ -72,7 +73,7 @@ export const ActivityRecommend = ({ data }) => {
             {follow ? (
               <TouchableOpacity
                 style={{ width: follow ? 90 : 68 }}
-                onPress={() => setFollow(!follow)}
+                onPress={() => setFollow(prev => !prev)}
               >
                 <View
                   style={{
@@ -87,7 +88,7 @@ export const ActivityRecommend = ({ data }) => {
                   }}
                 >
                   <Text style={{ color: follow ? '#000' : '#fff' }}>
-                    {follow ? 'following' : 'follow'}
+                    {follow ? 'Following' : 'Follow'}
                   </Text>
                 </View>
               </TouchableOpacity>
@@ -95,7 +96,7 @@ export const ActivityRecommend = ({ data }) => {
               <>
                 <TouchableOpacity
                   style={{ width: follow ? 90 : 68 }}
-                  onPress={() => setFollow(!follow)}
+                  onPress={() => setFollow(prev => !prev)}
                 >
                   <View
                     style={{
@@ -110,7 +111,7 @@ export const ActivityRecommend = ({ data }) => {
                     }}
                   >
                     <Text style={{ color: follow ? '#000' : '#fff' }}>
-                      {follow ? 'following' : 'follow'}
+                      {follow ? 'Following' : 'Follow'}
                     </Text>
                   </View>
                 </TouchableOpacity>

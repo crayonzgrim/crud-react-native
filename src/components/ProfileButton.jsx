@@ -1,11 +1,12 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { memo, useState } from 'react'
+import React, { useState } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import Feather from 'react-native-vector-icons/Feather'
 
 export const ProfileButton = ({ id, name, accountName, profileImage }) => {
   /** Property */
   const navigation = useNavigation()
+
   const [follow, setFollow] = useState(follow)
 
   /** Function */

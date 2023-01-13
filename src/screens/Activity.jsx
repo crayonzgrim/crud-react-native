@@ -27,13 +27,15 @@ export const Activity = () => {
       <ScrollView style={{ margin: 10 }} showsVerticalScrollIndicator={false}>
         <ActivityThisWeek />
         <Text style={{ fontWeight: 'bold' }}>이전 활동</Text>
-        {FriendsProfileData.slice(3, 6).map((data, index) => {
+
+        {FriendsProfileData.slice(3, 6).map(data => {
           return <ActivityPrevious data={data} />
         })}
+
         <Text style={{ fontWeight: 'bold', paddingVertical: 10 }}>
           회원님을 위한 추천
         </Text>
-        {FriendsProfileData.slice(6, 12).map((data, index) => {
+        {FriendsProfileData.slice(6, 12).map(data => {
           return <ActivityRecommend data={data} />
         })}
       </ScrollView>

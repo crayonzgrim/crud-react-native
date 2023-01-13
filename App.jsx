@@ -9,8 +9,8 @@ import { Search } from './src/screens/Search'
 import { Activity } from './src/screens/Activity'
 import { Profile } from './src/screens/Profile'
 import { Status } from './src/screens/Status'
-import { FriendProfile } from './src/screens/FriendProfile'
 import { EditProfile } from './src/screens/EditProfile'
+import { FriendProfile } from './src/screens/FriendProfile'
 
 const App = () => {
   const Stack = createNativeStackNavigator()
@@ -30,7 +30,6 @@ const App = () => {
             let iconName
             if (route.name === 'Home') {
               iconName = focused ? 'home-sharp' : 'home-outline'
-              // size = focused ? size + 8 : size + 2;
             } else if (route.name === 'Search') {
               iconName = focused ? 'search' : 'ios-search-outline'
             } else if (route.name === 'Activity') {
