@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 
@@ -6,6 +6,8 @@ export const FriendItem = ({ data, name }) => {
   /** Property */
   const [follow, setFollow] = useState(false)
   const [isClose, setIsClose] = useState(false)
+
+  const foo = useCallback(() => {}, [])
 
   /** Function */
 

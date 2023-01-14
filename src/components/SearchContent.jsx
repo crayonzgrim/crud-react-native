@@ -1,6 +1,6 @@
-import React from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
-import { searchData } from './searchData';
+import React from 'react'
+import { Image, Text, TouchableOpacity, View } from 'react-native'
+import { searchData } from './searchData'
 
 export const SearchContent = ({ getData }) => {
   return (
@@ -33,7 +33,7 @@ export const SearchContent = ({ getData }) => {
                         style={{ width: '100%', height: 150 }}
                       />
                     </TouchableOpacity>
-                  );
+                  )
                 })}
               </View>
             ) : null}
@@ -65,7 +65,7 @@ export const SearchContent = ({ getData }) => {
                           style={{ width: '100%', height: 150 }}
                         />
                       </TouchableOpacity>
-                    );
+                    )
                   })}
                 </View>
                 <TouchableOpacity
@@ -118,14 +118,14 @@ export const SearchContent = ({ getData }) => {
                           style={{ width: '100%', height: 150 }}
                         />
                       </TouchableOpacity>
-                    );
+                    )
                   })}
                 </View>
               </View>
             ) : null}
           </View>
-        );
+        )
       })}
     </View>
-  );
-};
+  )
+}
