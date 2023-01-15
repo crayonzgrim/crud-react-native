@@ -15,6 +15,17 @@ import PushNotificationIOS from '@react-native-community/push-notification-ios'
 import PushNotification from 'react-native-push-notification'
 
 export const Home = () => {
+  const createChannel = () => {
+    PushNotification.createChannel({
+      channelId: 'insta-channel',
+      channelName: 'Insta Channel'
+    })
+  }
+
+  useEffect(() => {
+    createChannel()
+  }, [])
+
   return (
     <SafeAreaView>
       <StatusBar backgroundColor={'#fff'} barStyle="dark-content" />

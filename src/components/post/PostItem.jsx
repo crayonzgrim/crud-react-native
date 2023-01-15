@@ -11,11 +11,33 @@ export const PostItem = ({ data }) => {
 
   const handleNotification = title => {
     if (Platform === 'ios') {
+      // PushNotificationIOS.addNotificationRequest({
+      //   id: title,
+      //   title: `${title}을 클릭했습니다!`,
+      //   body: '메세지 입니다'
+      // })
+
       PushNotificationIOS.addNotificationRequest({
         id: title,
         title: `${title}을 클릭했습니다!`,
         body: '메세지 입니다',
         fireDate: new Date(Date.now() + 5 * 1000)
+      })
+    } else {
+      PushNotification.getChannels(channel_ids => {
+        console.log(channel_ids)
+      })
+
+      PushNotification.cancelAllLocalNotifications()
+
+      PushNotification.localNotification({
+        channelId: 'insta-channel',
+        title: `${title}를 클릭했습니다`,
+        message: `메세지 입니다`,
+        color: '#000',
+        bigText: 'My big text',
+        date: new Date(Date.now() + 5 * 1000),
+        allowWhileIdle: true
       })
     }
   }
